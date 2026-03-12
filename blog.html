@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CofPro+ | The Journal</title>
+  <meta name="description" content="Insights, brewing guides, and stories from the world of CofPro+.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Blog Page Specific Styles */
+    .page-header {
+      padding: 160px 0 60px;
+      text-align: center;
+      background: linear-gradient(to bottom, var(--color-bg), var(--color-surface));
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    .page-header h1 {
+      margin-bottom: 16px;
+      color: var(--color-text-primary);
+    }
+    
+    .page-header p {
+      color: var(--color-text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .blog-section {
+      padding: 80px 0;
+    }
+
+    /* Featured Post */
+    .featured-post {
+      position: relative;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      overflow: hidden;
+      margin-bottom: 80px;
+      transition: var(--transition-smooth);
+    }
+
+    .featured-post:hover {
+      border-color: rgba(201, 168, 76, 0.4);
+    }
+
+    .featured-image {
+      width: 100%;
+      height: 100%;
+      min-height: 400px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .featured-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+      background: radial-gradient(circle at center, #1a1e24 0%, #0a0a0a 100%);
+    }
+
+    .featured-post:hover .featured-image img {
+      transform: scale(1.05);
+    }
+
+    .featured-content {
+      padding: 60px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .post-tag {
+      font-size: var(--text-xs);
+      color: var(--color-accent);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    .featured-content .post-title {
+      font-size: var(--text-xl);
+      margin-bottom: 20px;
+      color: var(--color-text-primary);
+    }
+
+    .featured-content .post-desc {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .post-meta {
+      font-size: var(--text-xs);
+      color: var(--color-text-secondary);
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    /* Blog Grid */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 40px 32px;
+    }
+
+    .blog-card {
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition-smooth);
+    }
+
+    .blog-card-image {
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      margin-bottom: 24px;
+      overflow: hidden;
+    }
+
+    .blog-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .blog-card:hover .blog-card-image img {
+      transform: scale(1.05);
+    }
+
+    .blog-card .post-title {
+      font-size: var(--text-lg);
+      margin-bottom: 12px;
+      color: var(--color-text-primary);
+      transition: color 0.3s ease;
+    }
+
+    .blog-card:hover .post-title {
+      color: var(--color-accent);
+    }
+
+    .blog-card .post-desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    @media (max-width: 992px) {
+      .featured-post { grid-template-columns: 1fr; }
+      .featured-image { min-height: 300px; }
+      .blog-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .blog-grid { grid-template-columns: 1fr; }
+      .featured-content { padding: 40px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="brand-logo">
+        <svg viewBox="0 0 24 24"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/></svg>
+        CofPro<span>+</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Products</a>
+        <a href="story.html">Our Story</a>
+        <a href="blog.html" class="active">Journal</a>
+      </div>
+      <div class="nav-actions">
+        <a href="#" class="nav-icon">
+          <!-- Search Icon -->
+          <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        </a>
+        <a href="shop.html" class="nav-icon">
+          <!-- Cart Icon -->
+          <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        </a>
+        <button class="mobile-menu-btn">
+          <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header fade-in">
+    <div class="container">
+      <h1 class="text-2xl">The CofPro+ Journal</h1>
+      <p class="text-lg">Explore brewing guides, origin stories, and the culture surrounding our craft.</p>
+    </div>
+  </header>
+
+  <!-- Blog Content -->
+  <section class="blog-section">
+    <div class="container">
+      
+      <!-- Featured Post -->
+      <article class="featured-post fade-in">
+        <div class="featured-image">
+           <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuQ7428b_433ykFw_5pQgla_Bd4OCI7CATePek7u0x3MqNUazQ7LILGndhTCCXRwNEEJo3ZfQpi3sy6CiSLy97Fcx32QI4DnQPb9d56sMelOQu0y_6tXxU_qNJGbfpX6BX9HuDK1Qyqah2m9y95Tu8hemjI98k26br5DonbE3GpdwDDP_ikWGz-qhqxpk6mFU31bKICXx8l_RoWmu5atsPaH3zStr3625JcyvmxHPZmZzvuP5eF9n56SRiYuloePfWqU90fz1sURV3" alt="Ethiopian Single Origin" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="featured-content">
+          <span class="post-tag">Origin Story</span>
+          <h2 class="post-title">Journey to the Highlands: Sourcing our Ethiopian Single Origin</h2>
+          <p class="post-desc">Discover the meticulous process of selecting the finest Heirloom varietals from the Yirgacheffe region. We spent three weeks meeting directly with farmers to ensure ethical practices and unparalleled quality.</p>
+          <div class="post-meta">
+            <span>October 12, 2024</span>
+            <span>•</span>
+            <span>6 Min Read</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Blog Grid -->
+      <div class="blog-grid">
+        <!-- Post 1 -->
+        <article class="blog-card fade-in">
+          <div class="blog-card-image">
+             <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJAUQc7whBT_G8ilAdHfw5_8iDvrYdfbqGbmXbcR_0q9mvS5TO8195eVpPp2icYZY5Yylvv9vSh1fWaIkKGXFopMS2UME-K49vv4t5WyM5mDwfhKsH-6gcv-jOYvQFsc5Lo8wg5hqwVWoGEM1gLwCIAxHPtOHzJOb7YEBl8flMZIVIy4RrmpgcgluGIiIT8-IZgmabh642vM_KhV04QUEd4N9MZrYSRrbVkN-PDlikwChOhX97RhGLEFVeKSHSfy1zYWCCy3Cr-f91" alt="Pour Over Guide" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <span class="post-tag">Brewing Guide</span>
+          <h3 class="post-title">Mastering the Pour Over</h3>
+          <p class="post-desc">A step-by-step guide to achieving the perfect extraction using a V60. Learn about grind size, water temperature, and blooming.</p>
+          <div class="post-meta">
+            <span>October 05, 2024</span>
+            <span>•</span>
+            <span>4 Min Read</span>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="blog-card fade-in" style="transition-delay: 0.1s;">
+          <div class="blog-card-image">
+             <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi6PSwhzWiEBcw-emSVIQvUemDHpL9tRN3Zqi6cMEkFkutuJCIIdZqxazq1tiXXlY7jlLIyezgOBf9gHoA4XM5c-owdrVD6LrIoxF_2QPIbwHWIPe-y0LMJuw9ELanILERSpFow5KfyaFx_Nt2ZrCqPKIeZPOXVobat80y-8R2fGaoZrCnAwt21jnfLZwBxt8qL2LEKh2J1U4v156Z8lyRMMmrSC7WxcrZed2J0JrxX1G7TMsv7AEDKJ4agJQZ-Bp-ACoU-YFuqStG" alt="Coffee Culture" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <span class="post-tag">Coffee Culture</span>
+          <h3 class="post-title">The Evolution of the Third Wave</h3>
+          <p class="post-desc">How artisan roasters shifted the focus from convenience to quality, and what the future holds for specialty coffee.</p>
+          <div class="post-meta">
+            <span>September 28, 2024</span>
+            <span>•</span>
+            <span>8 Min Read</span>
+          </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="blog-card fade-in" style="transition-delay: 0.2s;">
+          <div class="blog-card-image">
+             <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcFwBqLc4aY8pPWTrHAYG0hoJnJKtMXkVf_GUpCldl8JZR76aBB0SvlegD_NSp-LaXAKDuw0-220QW6VH_ev2i10jiXnU3L4-1SgH0bLfTW8aZZnitNmpFKro5Q14tzkEjTr2VLJ9Z4w0UMXwFeJxAJRMZv1Ea8BxHlr8KmzLLAurnRNI2L9Dim0ti1B9mNs0ILsUKKfiqaYxzkvT3dlf5sAbaRxgD6unPXpev0nZOlmoy6qOI2owNsKbbTS8xYBfK9aGTHr4Lgqtx" alt="Inside Our Roastery" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+          <span class="post-tag">Behind the Scenes</span>
+          <h3 class="post-title">Inside Our Roastery</h3>
+          <p class="post-desc">Take a virtual tour of our facility and meet the master roasters who craft your morning cup.</p>
+          <div class="post-meta">
+            <span>September 15, 2024</span>
+            <span>•</span>
+            <span>5 Min Read</span>
+          </div>
+        </article>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 24px;">
+            <svg viewBox="0 0 24 24"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/></svg>
+            CofPro<span>+</span>
+          </div>
+          <p>Elevating the coffee experience through craftsmanship and passion.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Inspiration</h4>
+          <div class="footer-links">
+            <a href="shop.html">The Collection</a>
+            <a href="#">Wholesale</a>
+            <a href="story.html">Our Story</a>
+            <a href="#">Shipping Policy</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <div class="footer-links">
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Join our community of enthusiasts</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Join the Journal</h4>
+          <p>Subscribe to receive news, updates, and exclusive releases.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault();">
+            <input type="email" class="newsletter-input" placeholder="Your email address" required>
+            <button type="submit" class="newsletter-btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 CofPro+. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

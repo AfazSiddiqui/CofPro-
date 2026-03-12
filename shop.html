@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CofPro+ | Shop Our Collection</title>
+  <meta name="description" content="Explore the premium collection of CofPro+ coffee blends.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Shop Specific Styles */
+    .page-header {
+      padding: 160px 0 60px;
+      text-align: center;
+      background: linear-gradient(to bottom, var(--color-bg), var(--color-surface));
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    .page-header h1 {
+      margin-bottom: 16px;
+      color: var(--color-text-primary);
+    }
+    
+    .page-header p {
+      color: var(--color-text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .shop-section {
+      padding: 80px 0;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    /* Product Card */
+    .product-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 2px;
+      overflow: hidden;
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .product-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--color-accent);
+      transition: width 0.4s ease;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      border-color: rgba(201, 168, 76, 0.3);
+      transform: translateY(-5px);
+    }
+
+    .product-card:hover::after {
+      width: 100%;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.05);
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 4/3;
+      overflow: hidden;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      opacity: 0.8;
+    }
+
+    .product-content {
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .product-title {
+      font-size: var(--text-lg);
+      margin-bottom: 12px;
+      color: var(--color-text-primary);
+    }
+
+    .product-desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 992px) {
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .product-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container nav-container">
+      <div class="brand-logo">
+        <svg viewBox="0 0 24 24"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/></svg>
+        CofPro<span>+</span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html" class="active">Products</a>
+        <a href="story.html">Our Story</a>
+        <a href="blog.html">Journal</a>
+      </div>
+      <div class="nav-actions">
+        <a href="#" class="nav-icon">
+          <!-- Search Icon -->
+          <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        </a>
+        <a href="shop.html" class="nav-icon">
+          <!-- Cart Icon -->
+          <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        </a>
+        <button class="mobile-menu-btn">
+          <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="page-header fade-in">
+    <div class="container">
+      <h1 class="text-2xl">Our Collection</h1>
+      <p class="text-lg">Discover our meticulously crafted blends, designed for those who appreciate the finer notes in every cup.</p>
+    </div>
+  </header>
+
+  <!-- Shop Grid Section -->
+  <section class="section collection-section">
+    <div class="container fade-in">
+      
+      <div class="product-grid">
+        <!-- Product 1 -->
+        <a href="#" class="product-card">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYbedx53_fbyf-4fsNMQCBkgT88W2hkygFemjDb_284g8I0Ty4hfS9twcwRYLSY47lrwFctt41_lnbSJN8Lcl9KB4BGKW0QtXqB4E9rQRU5uNoECtIyLFWeewnXHyQZrx-ISHFU8HTqkWlluavi5ehRGyjOsapPb36RpMhbHQYerqLdBFTXBXC2pwKqMiA9vD_NxI8GTuGzaUcbZS8K3ah6vARJk5M3c1-VUgATrzOG8RJg0SzmMKVymFlphjnvI5mIMuOKOqEhZ7m" alt="Signature Blend" class="product-image">
+          <div class="product-info">
+            <h3 class="product-title">Signature Blend</h3>
+            <div class="product-price">$18.00</div>
+          </div>
+        </a>
+        
+        <!-- Product 2 -->
+        <a href="#" class="product-card">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaVzZOX_lm_FqCx0e3bc8K7hYv-BhyZt7EokokQJ06651854sA_1PUzru_Sksg3_pcmdOkfMgooosaLjq27i82L6Y3FF5RekgRf8VBQGasqB3z96gwaP18ApuMbQMcNBecvs9VDkIDaJM14fn3lB3-NLtCVymXtHl2zWbWrgN8aUhlV2KDR4DBJaMPkP6vLbGG6OhAr3YPerfh4NYJmetu5Vb4nLzILnQHR71AsQTf0vRG8HDT_-1uszxKJz3i5RRdnCZrjJ8UDMcn" alt="Dark Roast Reserve" class="product-image">
+          <div class="product-info">
+            <h3 class="product-title">Dark Roast Reserve</h3>
+            <div class="product-price">$22.00</div>
+          </div>
+        </a>
+        
+        <!-- Product 3 -->
+        <a href="#" class="product-card">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCji_S0BcE1EvKODn8x35uQVPJ_Y5xQpIinE1AKhrCNunFIjKBGUfEHAYMHjZ1A3j_gloX2fmAYn8NK2Igq90KxLDGtUacGr713j2db-Tz11LNOELGcCymCXHt18WCUq6PsYQqsFUw73gEP9M4AqmveujZKvf1hTdayonTaK7Siv7r_t2QgSHK5YZaaYdDB4EPMqa3wrPlKVgd8iKeuxSVfzil2eHR5BnsotIeFzWdL4mF6lgANIPPjZdWb9K0Fsaf62cvdQqNEn8kA" alt="Cold Brew Concentrate" class="product-image">
+          <div class="product-info">
+            <h3 class="product-title">Cold Brew Concentrate</h3>
+            <div class="product-price">$24.00</div>
+          </div>
+        </a>
+        
+        <!-- Product 4 -->
+        <a href="#" class="product-card">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOCXQ2EcW9rXpAXLYF0GCORO6zwhlfnOlXv1fM2FQQo25EZcf0zxHI3hPfSiN7xJ2Fn3PxatQ2TX3cdILhT3yQAin5BE2zFlewxDD-SUFz0tf5i6x1GlWzMJ2mNepsWMxX-9yIctWAbTrigBIeuwI4cE8dGvra1p9tmy780Kl_V_SBMvvNderCNqLPh7ZKxiPbG9LpasIL6LQT5ZeSPKtdYU6Btk_7TOSx9CQkHC4ZcJNTeLYrZuSCOQ4XKkKts4_a2nrVfXyWOcGb" alt="Single Origin Ethiopia" class="product-image">
+          <div class="product-info">
+            <h3 class="product-title">Single Origin Ethiopia</h3>
+            <div class="product-price">$20.00</div>
+          </div>
+        </a>
+        
+        <!-- Product 5 -->
+        <a href="#" class="product-card">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAM3f5F8_M-h3Xo97NjExvBvZKc3gADhXpqicW3PO2W5C3EYzuWWQAHFaxd1kW6SZ785Hzwl7wC7prC5qrUOKQDRb4Ns92M7uHOXr0A3WhEsaeQOrBUVNy_MLWJVSQ57esr522VpkxkspnGT44HxCLmneK3Kj1RB6kAQkxxQ3JeeS1vdfi9C4FHoSuMNPbG9qs4cLuRMyalpGM4jcMgthPOwVTH2ai1_fxnJcY6C1GGf63SMVSKdAvjbUqObRgzHNFLzvHH7dTsCfD6" alt="Espresso Collection" class="product-image">
+          <div class="product-info">
+            <h3 class="product-title">Espresso Collection</h3>
+            <div class="product-price">$26.00</div>
+          </div>
+        </a>
+        
+        <!-- Product 6 -->
+        <a href="#" class="product-card">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXa0tlRt2kxDPd4J_CwKzXJDHOdF5zwbhnl06hPHneN4Vea1SzHENR-jlj95tyF2bs2SawYm61pKyc8G03tZnBoEWJqoEJIKhCWRzeixERmQs0_n-uxF2-w1GUhSguBsJAtA9Q4MAO3ANkSmRldBLaEJ7OJJDz9d474Tua822unw7eutTWnrLQt0efPHt2v6Lof0i4PRQnGjS5EcpO43tqVe93b1PgATaBm-kncfDAnOVqlGOgMdw91CwBiqZXVFO-qDks8nG2Hsah" alt="Limited Edition Blend" class="product-image">
+          <div class="product-info">
+            <h3 class="product-title">Limited Edition Blend</h3>
+            <div class="product-price">$28.00</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 24px;">
+            <svg viewBox="0 0 24 24"><path d="M20 3H4v10c0 2.21 1.79 4 4 4h6c2.21 0 4-1.79 4-4v-3h2c1.11 0 2-.89 2-2V5c0-1.11-.89-2-2-2zm0 5h-2V5h2v3zM4 19h16v2H4z"/></svg>
+            CofPro<span>+</span>
+          </div>
+          <p>Elevating the coffee experience through craftsmanship and passion.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Inspiration</h4>
+          <div class="footer-links">
+            <a href="shop.html">The Collection</a>
+            <a href="#">Wholesale</a>
+            <a href="story.html">Our Story</a>
+            <a href="#">Shipping Policy</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Connect</h4>
+          <div class="footer-links">
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">Twitter</a>
+            <a href="#">Join our community of enthusiasts</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Join the Journal</h4>
+          <p>Subscribe to receive news, updates, and exclusive releases.</p>
+          <form class="newsletter-form" onsubmit="event.preventDefault();">
+            <input type="email" class="newsletter-input" placeholder="Your email address" required>
+            <button type="submit" class="newsletter-btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 CofPro+. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
